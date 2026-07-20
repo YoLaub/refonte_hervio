@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DoctolibCTA from '../components/DoctolibCTA.astro';
+import TeamSection from '../components/TeamSection.astro';
 import { adresseComplete } from '../data/site';
 
 const axes = [
@@ -65,6 +66,9 @@ const axes = [
       ))}
     </div>
   </section>
+
+  <!-- Équipe -->
+  <TeamSection class="bg-white" />
 
   <!-- Coordonnées -->
   <section class="bg-brand-50">

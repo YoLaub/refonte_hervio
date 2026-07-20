@@ -3,25 +3,45 @@
 
 export interface Practitioner {
   nom: string;
+  role: string;
   tel: string; // format affiché
   telHref: string; // format tel: (E.164 sans espaces)
   doctolib: string;
+  // Chemin de la photo dans /public (ex. '/equipe/lenaig.jpg'). Laisser undefined
+  // affiche un avatar avec les initiales. Déposer le fichier suffit à l'activer.
+  photo?: string;
+  // Courte présentation — à compléter avec la praticienne (voir docs/content-source.md).
+  presentation?: string;
 }
 
 export const practitioners: Practitioner[] = [
   {
     nom: 'Lénaïg Hervio - Le Mercier',
+    role: 'Sage-femme',
     tel: '06 60 07 94 23',
     telHref: '+33660079423',
     doctolib: 'https://www.doctolib.fr/sage-femme/vannes/lenaig-hervio-le-mercier',
+    // photo: '/equipe/lenaig.jpg',
   },
   {
     nom: 'Julie Quintin',
+    role: 'Sage-femme',
     tel: '06 33 07 23 24',
     telHref: '+33633072324',
     doctolib: 'https://www.doctolib.fr/sage-femme/vannes/julie-quintin',
+    // photo: '/equipe/julie.jpg',
   },
 ];
+
+// Initiales pour l'avatar par défaut (« Lénaïg Hervio - Le Mercier » → « LH »).
+export function initials(nom: string): string {
+  return nom
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((m) => m[0]?.toUpperCase() ?? '')
+    .join('');
+}
 
 export const site = {
   nom: 'Cabinet de sages-femmes de Vannes',
