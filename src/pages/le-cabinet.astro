@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DoctolibCTA from '../components/DoctolibCTA.astro';
+import TeamSection from '../components/TeamSection.astro';
 import { site, practitioners, adresseComplete } from '../data/site';
 
 const liens = [
@@ -54,10 +54,9 @@ const liens = [
           ))}
         </ul>
       </div>
-      <div class="rounded-2xl bg-brand-50 p-6">
-        <h2 class="font-serif text-lg text-brand-700">Rendez-vous</h2>
-        <div class="mt-3"><DoctolibCTA /></div>
-      </div>
     </aside>
   </div>
+
+  <!-- Équipe : photos des praticiennes -->
+  <TeamSection class="border-t border-brand-100 bg-brand-50" />
 </BaseLayout>
