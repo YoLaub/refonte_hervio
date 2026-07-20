@@ -36,3 +36,18 @@ stack du projet en cours — inutile de charger le reste en contexte.
 - pydantic→zod : `by_alias=True, exclude_none=True` (zod `.optional()` refuse null).
 - Scrapling : navigateurs via l'exe `scrapling install`, pas `python -m scrapling` ; le
   Playwright ainsi installé est réutilisable pour du rendu PDF (ne pas réembarquer Chromium).
+
+## Astro 5 / site statique (2026-07, projet refonte sagefemmevannes)
+- npm `allow-scripts` bloque les postinstall (esbuild, sharp) → build KO tant qu'on n'a
+  pas `npm approve-scripts esbuild sharp` puis `npm rebuild`. Vérifier après tout install.
+- Tailwind v4 : plus de `tailwind.config.js` ; config CSS-first via `@theme` dans le CSS
+  + plugin `@tailwindcss/vite` dans `astro.config`. Ne pas générer de config JS.
+- E2E d'un site statique = `astro build` + un script Node qui grep le HTML de `dist/`
+  (CTA, coordonnées, JSON-LD, slugs attendus) ; testable sans navigateur.
+- Scraper un site source WordPress OVH : le HTTPS peut servir un cert mutualisé
+  (`*.hosting.ovh.net`) qui casse WebFetch → passer par `curl http://`.
+- Content Collections : garder le schéma Zod dans un fichier à part importé depuis `zod`
+  (PAS `astro:content`, module virtuel non résolvable en Vitest) → schéma testable en
+  unitaire ET réutilisé par `content.config.ts`.
+- Frontmatter YAML : une valeur contenant « : » (ex. « 4ème mois : un temps… ») doit être
+  quotée, sinon gray-matter/js-yaml lève « incomplete explicit mapping pair ».

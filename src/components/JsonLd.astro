@@ -1,0 +1,5 @@
+---
+import { medicalBusinessJsonLd } from '../lib/jsonld';
+const data = medicalBusinessJsonLd();
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} is:inline />

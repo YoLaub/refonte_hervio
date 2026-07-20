@@ -1,0 +1,101 @@
+@import 'tailwindcss';
+
+/* ── Design system « Sérénité végétale » ──────────────────────────────
+   Vert sauge doux + touche terracotta, beaucoup de blanc, coins arrondis,
+   titres serif humaniste. Tokens = source unique de la charte. */
+@theme {
+  --color-brand-50: #f2f7f5;
+  --color-brand-100: #dcebe6;
+  --color-brand-200: #bcd8cf;
+  --color-brand-300: #97c2b3;
+  --color-brand-400: #6ba690;
+  --color-brand-500: #4f9078;
+  --color-brand-600: #3f7d67;
+  --color-brand-700: #315f4f;
+  --color-brand-800: #274b3f;
+  --color-brand-900: #1f3a30;
+
+  --color-accent-300: #f0c3ba;
+  --color-accent-400: #e8a598;
+  --color-accent-500: #db8b7b;
+  --color-accent-600: #c97a68;
+
+  --color-cream: #f7faf8;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+}
+
+/* Titres en serif humaniste. */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+/* Accessibilité : focus visible net (WCAG AA). */
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip-link clavier. */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-brand-700);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0 0 0.5rem 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Menus déroulants : ouverts au survol ET au focus clavier (a11y). */
+.has-dropdown:hover > .dropdown,
+.has-dropdown:focus-within > .dropdown {
+  display: block;
+}
+
+/* Contenu d'article (prose) — typographie lisible sans plugin externe. */
+.prose {
+  color: var(--color-brand-900);
+  line-height: 1.75;
+  max-width: 42rem;
+}
+.prose h2 {
+  color: var(--color-brand-700);
+  font-size: 1.5rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose h3 {
+  color: var(--color-brand-700);
+  font-size: 1.2rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.prose p {
+  margin-bottom: 1.1rem;
+}
+.prose ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1.1rem;
+}
+.prose li {
+  margin-bottom: 0.35rem;
+}
+.prose strong {
+  color: var(--color-brand-800);
+}
+.prose a {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+}
