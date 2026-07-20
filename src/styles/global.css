@@ -62,3 +62,40 @@ h1, h2, h3 {
 .has-dropdown:focus-within > .dropdown {
   display: block;
 }
+
+/* Contenu d'article (prose) — typographie lisible sans plugin externe. */
+.prose {
+  color: var(--color-brand-900);
+  line-height: 1.75;
+  max-width: 42rem;
+}
+.prose h2 {
+  color: var(--color-brand-700);
+  font-size: 1.5rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose h3 {
+  color: var(--color-brand-700);
+  font-size: 1.2rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.prose p {
+  margin-bottom: 1.1rem;
+}
+.prose ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1.1rem;
+}
+.prose li {
+  margin-bottom: 0.35rem;
+}
+.prose strong {
+  color: var(--color-brand-800);
+}
+.prose a {
+  color: var(--color-brand-600);
+  text-decoration: underline;
+}

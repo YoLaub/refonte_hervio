@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DoctolibCTA from '../components/DoctolibCTA.astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { service: service.id },
+    props: { service, services },
+  }));
+}
+
+const { service, services } = Astro.props;
+const { Content } = await render(service);
+
+const categoryLabels: Record<string, string> = {
+  enceinte: 'Je suis enceinte',
+  apres: 'Après la naissance',
+  gyneco: 'Gynécologie & contraception',
+  acupuncture: 'Acupuncture',
+};
+
+// Autres prestations de la même catégorie (pour la navigation latérale).
+const related = services
+  .filter((s) => s.data.category === service.data.category)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title={service.data.seo.title} description={service.data.seo.description}>
+  <!-- Bandeau titre -->
+  <section class="bg-brand-100/60">
+    <div class="mx-auto max-w-6xl px-6 py-12">
+      <nav aria-label="Fil d'ariane" class="text-sm text-brand-600">
+        <a href="/" class="hover:underline">Accueil</a>
+        <span aria-hidden="true"> / </span>
+        <span>{categoryLabels[service.data.category]}</span>
+      </nav>
+      <h1 class="mt-2 text-3xl font-bold text-brand-800 md:text-4xl">{service.data.title}</h1>
+    </div>
+  </section>
+
+  <div class="mx-auto grid max-w-6xl gap-12 px-6 py-12 lg:grid-cols-[1fr_18rem]">
+    <article class="prose">
+      <Content />
+
+      <div class="mt-10 rounded-2xl bg-brand-50 p-6 not-prose">
+        <p class="font-serif text-lg text-brand-700">Prendre rendez-vous</p>
+        <p class="mt-1 mb-4 text-sm text-brand-800">
+          Consultation sur rendez-vous, au cabinet ou à domicile selon la prestation.
+        </p>
+        <DoctolibCTA />
+      </div>
+    </article>
+
+    {related.length > 1 && (
+      <aside aria-label="Autres prestations" class="lg:pt-2">
+        <p class="font-serif text-lg text-brand-700">{categoryLabels[service.data.category]}</p>
+        <ul class="mt-3 space-y-1">
+          {related.map((s) => (
+            <li>
+              <a
+                href={`/${s.id}/`}
+                class:list={[
+                  'block rounded-xl px-3 py-2 text-sm hover:bg-brand-50',
+                  s.id === service.id ? 'bg-brand-100 font-medium text-brand-800' : 'text-brand-700',
+                ]}
+                aria-current={s.id === service.id ? 'page' : undefined}
+              >
+                {s.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )}
+  </div>
+</BaseLayout>
