@@ -1,0 +1,33 @@
+---
+// Bouton RDV compact déroulant (header) — <details> natif, sans JS.
+// Alimenté par la source de vérité src/data/site.ts.
+import { practitioners } from '../data/site';
+---
+
+<details class="doctolib-menu group relative">
+  <summary
+    class="flex cursor-pointer list-none items-center gap-2 rounded-full bg-brand-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-700"
+    aria-label="Prendre rendez-vous en ligne"
+  >
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
+    </svg>
+    Prendre rendez-vous
+    <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <ul class="absolute right-0 z-50 mt-2 min-w-64 rounded-2xl border border-brand-100 bg-white p-2 shadow-lg">
+    <li class="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-brand-500">Sur Doctolib</li>
+    {practitioners.map((p) => (
+      <li>
+        <a
+          href={p.doctolib}
+          rel="noopener"
+          target="_blank"
+          class="block rounded-xl px-3 py-2 text-sm text-brand-800 hover:bg-brand-50"
+        >
+          {p.nom}
+        </a>
+      </li>
+    ))}
+  </ul>
+</details>

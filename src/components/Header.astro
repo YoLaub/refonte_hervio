@@ -2,6 +2,7 @@
 import { nav } from '../data/nav';
 import { site } from '../data/site';
 import DoctolibCTA from './DoctolibCTA.astro';
+import DoctolibMenu from './DoctolibMenu.astro';
 ---
 
 <header class="sticky top-0 z-40 border-b border-brand-100 bg-cream/90 backdrop-blur">
@@ -41,8 +42,8 @@ import DoctolibCTA from './DoctolibCTA.astro';
       </ul>
     </nav>
 
-    <div class="hidden xl:block">
-      <DoctolibCTA compact />
+    <div class="hidden lg:block">
+      <DoctolibMenu />
     </div>
 
     <!-- Menu mobile : <details> natif, sans JS -->

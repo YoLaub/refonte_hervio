@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { site } from '../data/site';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import JsonLd from '../components/JsonLd.astro';
 
 interface Props {
   title: string;
@@ -27,6 +28,7 @@ const fullTitle = `${title} — ${site.nom}`;
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <JsonLd />
   </head>
   <body class="min-h-screen bg-brand-50 text-brand-900 font-sans antialiased">
     <a href="#content" class="skip-link">Aller au contenu principal</a>
