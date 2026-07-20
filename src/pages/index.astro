@@ -1,25 +1,82 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site, practitioners, adresseComplete } from '../data/site';
+import DoctolibCTA from '../components/DoctolibCTA.astro';
+import { adresseComplete } from '../data/site';
+
+const axes = [
+  {
+    titre: 'Pendant la grossesse',
+    href: '/consultations-de-grossesse/',
+    items: ['Consultations de grossesse', 'Entretien prénatal', 'Préparation à la naissance et à la parentalité', 'Acupuncture'],
+  },
+  {
+    titre: 'Après la naissance',
+    href: '/suivi-apres-accouchement/',
+    items: ['Suivi de la maman et du bébé à domicile ou au cabinet', 'Soutien à l\'allaitement', 'Visite post-natale', 'Rééducation périnéale', 'Acupuncture'],
+  },
+  {
+    titre: 'Suivi gynécologique et contraception',
+    href: '/suivi-gynecologique-et-contraception/',
+    items: ['Surveillance des seins, frottis cervico-vaginaux', 'Contraception : pilule, stérilet, implants', 'Suivi gynécologique de prévention', 'Acupuncture'],
+  },
+];
 ---
 
 <BaseLayout
   title="Accueil"
-  description="Cabinet de sages-femmes à Vannes : suivi de grossesse, préparation à la naissance, suivi après l'accouchement, gynécologie, contraception et acupuncture."
+  description="Cabinet de sages-femmes à Vannes : suivi de grossesse, préparation à la naissance, suivi après l'accouchement, gynécologie, contraception et acupuncture. Sur rendez-vous."
 >
-  <section class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-4xl font-bold text-brand-700">{site.nom}</h1>
-    <p class="mt-4 text-lg">{site.praticiennes}</p>
-    <p class="mt-2">{adresseComplete}</p>
-    <ul class="mt-6 space-y-1">
-      {practitioners.map((p) => (
-        <li>
-          <span class="font-medium">{p.nom}</span> —
-          <a class="text-brand-600 underline" href={`tel:${p.telHref}`}>{p.tel}</a> —
-          <a class="text-brand-600 underline" href={p.doctolib} rel="noopener">Prendre rendez-vous</a>
-        </li>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-100 via-cream to-accent-300/30" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-4xl px-6 py-20 text-center md:py-28">
+      <p class="font-medium uppercase tracking-wide text-brand-600">Cabinet de sages-femmes · Vannes</p>
+      <h1 class="mt-4 text-4xl font-bold leading-tight text-brand-800 md:text-5xl">
+        Un accompagnement à vos côtés, de la grossesse aux premiers pas
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-brand-800/90">
+        La sage-femme est un interlocuteur privilégié tout au long de votre grossesse,
+        ainsi qu'après la naissance de votre enfant. Il nous tient à cœur de vous
+        accompagner au plus près de vos attentes et de celles de votre couple.
+      </p>
+      <div class="mt-8 flex justify-center">
+        <DoctolibCTA />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trois axes -->
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <h2 class="text-center text-3xl font-bold text-brand-700">Nos accompagnements</h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {axes.map((axe) => (
+        <a href={axe.href} class="group flex flex-col rounded-3xl border border-brand-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <h3 class="text-xl text-brand-700">{axe.titre}</h3>
+          <ul class="mt-4 flex-1 space-y-2 text-sm text-brand-800">
+            {axe.items.map((it) => (
+              <li class="flex gap-2">
+                <span class="mt-1 text-accent-500" aria-hidden="true">◗</span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+          <span class="mt-6 font-medium text-brand-600 group-hover:underline">En savoir plus →</span>
+        </a>
       ))}
-    </ul>
-    <p class="mt-8 text-sm text-brand-700/80">Site en cours de refonte.</p>
+    </div>
+  </section>
+
+  <!-- Coordonnées -->
+  <section class="bg-brand-50">
+    <div class="mx-auto max-w-4xl px-6 py-14 text-center">
+      <h2 class="text-2xl font-bold text-brand-700">Le cabinet</h2>
+      <p class="mt-3 text-lg text-brand-800">{adresseComplete}</p>
+      <p class="mt-2 text-sm text-brand-700/80">
+        Sage-femme conventionnée Secteur 1 — tarifs conventionnels sans dépassement d'honoraires, tiers-payant pratiqué.
+      </p>
+      <div class="mt-6 flex justify-center">
+        <a href="/contact/" class="rounded-full bg-brand-600 px-5 py-3 font-medium text-white transition hover:bg-brand-700">Nous contacter</a>
+      </div>
+    </div>
   </section>
 </BaseLayout>
