@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, practitioners, adresseComplete } from '../data/site';
+---
+
+<BaseLayout
+  title="Accueil"
+  description="Cabinet de sages-femmes à Vannes : suivi de grossesse, préparation à la naissance, suivi après l'accouchement, gynécologie, contraception et acupuncture."
+>
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    <h1 class="text-4xl font-bold text-brand-700">{site.nom}</h1>
+    <p class="mt-4 text-lg">{site.praticiennes}</p>
+    <p class="mt-2">{adresseComplete}</p>
+    <ul class="mt-6 space-y-1">
+      {practitioners.map((p) => (
+        <li>
+          <span class="font-medium">{p.nom}</span> —
+          <a class="text-brand-600 underline" href={`tel:${p.telHref}`}>{p.tel}</a> —
+          <a class="text-brand-600 underline" href={p.doctolib} rel="noopener">Prendre rendez-vous</a>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-8 text-sm text-brand-700/80">Site en cours de refonte.</p>
+  </section>
+</BaseLayout>
