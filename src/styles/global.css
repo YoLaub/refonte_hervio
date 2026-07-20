@@ -63,39 +63,42 @@ h1, h2, h3 {
   display: block;
 }
 
-/* Contenu d'article (prose) — typographie lisible sans plugin externe. */
+/* Contenu d'article (prose) — typographie lisible sans plugin externe.
+   Toutes les règles utilisent :where() (spécificité 0) et excluent le sous-arbre
+   .not-prose, afin que les classes utilitaires (ex. text-white d'un bouton) l'emportent
+   toujours — comme le fait @tailwindcss/typography. */
 .prose {
   color: var(--color-brand-900);
   line-height: 1.75;
   max-width: 42rem;
 }
-.prose h2 {
+.prose :where(h2):not(:where(.not-prose, .not-prose *)) {
   color: var(--color-brand-700);
   font-size: 1.5rem;
   margin-top: 2.25rem;
   margin-bottom: 0.75rem;
 }
-.prose h3 {
+.prose :where(h3):not(:where(.not-prose, .not-prose *)) {
   color: var(--color-brand-700);
   font-size: 1.2rem;
   margin-top: 1.75rem;
   margin-bottom: 0.5rem;
 }
-.prose p {
+.prose :where(p):not(:where(.not-prose, .not-prose *)) {
   margin-bottom: 1.1rem;
 }
-.prose ul {
+.prose :where(ul):not(:where(.not-prose, .not-prose *)) {
   list-style: disc;
   padding-left: 1.4rem;
   margin-bottom: 1.1rem;
 }
-.prose li {
+.prose :where(li):not(:where(.not-prose, .not-prose *)) {
   margin-bottom: 0.35rem;
 }
-.prose strong {
+.prose :where(strong):not(:where(.not-prose, .not-prose *)) {
   color: var(--color-brand-800);
 }
-.prose a {
+.prose :where(a):not(:where(.not-prose, .not-prose *)) {
   color: var(--color-brand-600);
   text-decoration: underline;
 }
