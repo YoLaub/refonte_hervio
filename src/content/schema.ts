@@ -13,6 +13,9 @@ export const serviceSchema = z.object({
     title: z.string().min(10),
     description: z.string().min(30).max(160),
   }),
+  // Photo d'illustration optionnelle (chemin dans /public, ex. '/services/perinee.jpg').
+  // Absente → illustration placeholder par catégorie (voir CategoryIllustration.astro).
+  image: z.string().optional(),
   // slug dérivé du nom de fichier par Astro ; pas dans le frontmatter.
 });
 
