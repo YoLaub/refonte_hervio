@@ -17,6 +17,8 @@ const musts = [
   ['nav rubrique grossesse', 'Je suis enceinte'],
   ['nav rubrique après naissance', 'Après la naissance'],
   ['footer convention secteur 1', 'Secteur 1'],
+  ['données structurées JSON-LD', 'application/ld+json'],
+  ['schema.org MedicalClinic', '"MedicalClinic"'],
 ];
 
 // Les 12 pages attendues (une page = un fichier index.html généré).
