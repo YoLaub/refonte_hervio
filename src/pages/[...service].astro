@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DoctolibCTA from '../components/DoctolibCTA.astro';
+import CategoryIllustration from '../components/CategoryIllustration.astro';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -28,15 +29,23 @@ const related = services
 ---
 
 <BaseLayout title={service.data.seo.title} description={service.data.seo.description}>
-  <!-- Bandeau titre -->
+  <!-- Bandeau titre + illustration -->
   <section class="bg-brand-100/60">
-    <div class="mx-auto max-w-6xl px-6 py-12">
-      <nav aria-label="Fil d'ariane" class="text-sm text-brand-600">
-        <a href="/" class="hover:underline">Accueil</a>
-        <span aria-hidden="true"> / </span>
-        <span>{categoryLabels[service.data.category]}</span>
-      </nav>
-      <h1 class="mt-2 text-3xl font-bold text-brand-800 md:text-4xl">{service.data.title}</h1>
+    <div class="mx-auto grid max-w-6xl items-center gap-8 px-6 py-12 md:grid-cols-[1fr_16rem]">
+      <div>
+        <nav aria-label="Fil d'ariane" class="text-sm text-brand-600">
+          <a href="/" class="hover:underline">Accueil</a>
+          <span aria-hidden="true"> / </span>
+          <span>{categoryLabels[service.data.category]}</span>
+        </nav>
+        <h1 class="mt-2 text-3xl font-bold text-brand-800 md:text-4xl">{service.data.title}</h1>
+      </div>
+      <CategoryIllustration
+        category={service.data.category}
+        image={service.data.image}
+        alt={service.data.title}
+        class="hidden h-40 w-full rounded-3xl md:block"
+      />
     </div>
   </section>
 

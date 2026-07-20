@@ -2,22 +2,27 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DoctolibCTA from '../components/DoctolibCTA.astro';
 import TeamSection from '../components/TeamSection.astro';
+import CategoryIllustration from '../components/CategoryIllustration.astro';
 import { adresseComplete } from '../data/site';
+import type { Category } from '../lib/category';
 
-const axes = [
+const axes: { titre: string; href: string; category: Category; items: string[] }[] = [
   {
     titre: 'Pendant la grossesse',
     href: '/consultations-de-grossesse/',
+    category: 'enceinte',
     items: ['Consultations de grossesse', 'Entretien prénatal', 'Préparation à la naissance et à la parentalité', 'Acupuncture'],
   },
   {
     titre: 'Après la naissance',
     href: '/suivi-apres-accouchement/',
+    category: 'apres',
     items: ['Suivi de la maman et du bébé à domicile ou au cabinet', 'Soutien à l\'allaitement', 'Visite post-natale', 'Rééducation périnéale', 'Acupuncture'],
   },
   {
     titre: 'Suivi gynécologique et contraception',
     href: '/suivi-gynecologique-et-contraception/',
+    category: 'gyneco',
     items: ['Surveillance des seins, frottis cervico-vaginaux', 'Contraception : pilule, stérilet, implants', 'Suivi gynécologique de prévention', 'Acupuncture'],
   },
 ];
@@ -51,17 +56,20 @@ const axes = [
     <h2 class="text-center text-3xl font-bold text-brand-700">Nos accompagnements</h2>
     <div class="mt-10 grid gap-6 md:grid-cols-3">
       {axes.map((axe) => (
-        <a href={axe.href} class="group flex flex-col rounded-3xl border border-brand-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-          <h3 class="text-xl text-brand-700">{axe.titre}</h3>
-          <ul class="mt-4 flex-1 space-y-2 text-sm text-brand-800">
-            {axe.items.map((it) => (
-              <li class="flex gap-2">
-                <span class="mt-1 text-accent-500" aria-hidden="true">◗</span>
-                <span>{it}</span>
-              </li>
-            ))}
-          </ul>
-          <span class="mt-6 font-medium text-brand-600 group-hover:underline">En savoir plus →</span>
+        <a href={axe.href} class="group flex flex-col overflow-hidden rounded-3xl border border-brand-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <CategoryIllustration category={axe.category} class="h-32 w-full" />
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-xl text-brand-700">{axe.titre}</h3>
+            <ul class="mt-4 flex-1 space-y-2 text-sm text-brand-800">
+              {axe.items.map((it) => (
+                <li class="flex gap-2">
+                  <span class="mt-1 text-accent-500" aria-hidden="true">◗</span>
+                  <span>{it}</span>
+                </li>
+              ))}
+            </ul>
+            <span class="mt-6 font-medium text-brand-600 group-hover:underline">En savoir plus →</span>
+          </div>
         </a>
       ))}
     </div>
