@@ -1,0 +1,76 @@
+---
+import { nav } from '../data/nav';
+import { site } from '../data/site';
+import DoctolibCTA from './DoctolibCTA.astro';
+---
+
+<header class="sticky top-0 z-40 border-b border-brand-100 bg-cream/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 lg:px-6">
+    <a href="/" class="flex flex-col leading-tight">
+      <span class="font-serif text-lg font-bold text-brand-700">Sages-femmes Vannes</span>
+      <span class="text-xs text-brand-600/80">{site.praticiennes}</span>
+    </a>
+
+    <nav aria-label="Navigation principale" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {nav.map((g) => (
+          <li class={`has-dropdown relative ${g.children ? '' : ''}`}>
+            {g.children ? (
+              <>
+                <button
+                  type="button"
+                  class="flex items-center gap-1 rounded-full px-3 py-2 text-sm text-brand-800 hover:bg-brand-100"
+                  aria-haspopup="true"
+                >
+                  {g.label}
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <ul class="dropdown absolute left-0 top-full hidden min-w-64 rounded-2xl border border-brand-100 bg-white p-2 shadow-lg">
+                  {g.children.map((c) => (
+                    <li>
+                      <a href={c.href} class="block rounded-xl px-3 py-2 text-sm text-brand-800 hover:bg-brand-50">{c.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a href={g.href} class="block rounded-full px-3 py-2 text-sm text-brand-800 hover:bg-brand-100">{g.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="hidden xl:block">
+      <DoctolibCTA compact />
+    </div>
+
+    <!-- Menu mobile : <details> natif, sans JS -->
+    <details class="lg:hidden">
+      <summary class="list-none rounded-full p-2 text-brand-700 hover:bg-brand-100" aria-label="Ouvrir le menu">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </summary>
+      <div class="absolute inset-x-0 top-full border-b border-brand-100 bg-white p-4 shadow-lg">
+        <ul class="space-y-1">
+          {nav.map((g) => (
+            <li>
+              {g.href ? (
+                <a href={g.href} class="block rounded-xl px-3 py-2 font-medium text-brand-800 hover:bg-brand-50">{g.label}</a>
+              ) : (
+                <span class="block px-3 pt-2 text-xs font-semibold uppercase tracking-wide text-brand-500">{g.label}</span>
+              )}
+              {g.children && (
+                <ul class="ml-3 border-l border-brand-100">
+                  {g.children.map((c) => (
+                    <li><a href={c.href} class="block rounded-xl px-3 py-2 text-sm text-brand-700 hover:bg-brand-50">{c.label}</a></li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-4"><DoctolibCTA compact /></div>
+      </div>
+    </details>
+  </div>
+</header>

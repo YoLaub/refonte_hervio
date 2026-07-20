@@ -12,6 +12,9 @@ const musts = [
   ['adresse', '53 avenue Edouard Herriot'],
   ['skip-link', 'Aller au contenu principal'],
   ['langue fr', 'lang="fr"'],
+  ['nav rubrique grossesse', 'Je suis enceinte'],
+  ['nav rubrique après naissance', 'Après la naissance'],
+  ['footer convention secteur 1', 'Secteur 1'],
 ];
 
 let ok = true;
