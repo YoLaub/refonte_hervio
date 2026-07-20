@@ -46,3 +46,8 @@ stack du projet en cours — inutile de charger le reste en contexte.
   (CTA, coordonnées, JSON-LD, slugs attendus) ; testable sans navigateur.
 - Scraper un site source WordPress OVH : le HTTPS peut servir un cert mutualisé
   (`*.hosting.ovh.net`) qui casse WebFetch → passer par `curl http://`.
+- Content Collections : garder le schéma Zod dans un fichier à part importé depuis `zod`
+  (PAS `astro:content`, module virtuel non résolvable en Vitest) → schéma testable en
+  unitaire ET réutilisé par `content.config.ts`.
+- Frontmatter YAML : une valeur contenant « : » (ex. « 4ème mois : un temps… ») doit être
+  quotée, sinon gray-matter/js-yaml lève « incomplete explicit mapping pair ».
