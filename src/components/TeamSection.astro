@@ -1,0 +1,27 @@
+---
+import { practitioners } from '../data/site';
+import PractitionerCard from './PractitionerCard.astro';
+
+interface Props {
+  title?: string;
+  intro?: string;
+  class?: string;
+}
+const {
+  title = 'Rencontrez votre sage-femme',
+  intro = "Deux sages-femmes à votre écoute, pour un accompagnement personnalisé tout au long de votre grossesse et après la naissance.",
+  class: className = '',
+} = Astro.props;
+---
+
+<section class={className}>
+  <div class="mx-auto max-w-5xl px-6 py-16">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-brand-700">{title}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-brand-800/90">{intro}</p>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      {practitioners.map((p) => <PractitionerCard practitioner={p} />)}
+    </div>
+  </div>
+</section>
