@@ -1,0 +1,36 @@
+---
+// Boutons de prise de rendez-vous — composant UNIQUE réutilisé partout.
+// Alimenté par la source de vérité src/data/site.ts.
+import { practitioners } from '../data/site';
+
+interface Props {
+  variant?: 'solid' | 'ghost';
+  compact?: boolean; // header : plus petit
+}
+const { variant = 'solid', compact = false } = Astro.props;
+
+const base =
+  'inline-flex items-center gap-2 rounded-full font-medium transition focus-visible:outline-2';
+const size = compact ? 'px-4 py-2 text-sm' : 'px-5 py-3';
+const styles =
+  variant === 'solid'
+    ? 'bg-brand-600 text-white hover:bg-brand-700'
+    : 'bg-white text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50';
+---
+
+<div class="flex flex-wrap gap-3">
+  {practitioners.map((p) => (
+    <a
+      href={p.doctolib}
+      rel="noopener"
+      target="_blank"
+      class={`${base} ${size} ${styles}`}
+      aria-label={`Prendre rendez-vous en ligne avec ${p.nom} sur Doctolib`}
+    >
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
+      </svg>
+      RDV — {p.nom}
+    </a>
+  ))}
+</div>
