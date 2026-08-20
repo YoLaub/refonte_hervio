@@ -55,7 +55,9 @@ export const site = {
   },
   convention: 'Sage-femme conventionnée Secteur 1 — tarifs conventionnels sans dépassement d\'honoraires, tiers-payant pratiqué.',
   facebook: 'https://www.facebook.com/pages/Cabinet-Sages-femmes-Vannes/921860981208057',
-  url: 'https://www.sagefemmevannes.com',
+  // Sur Netlify, `URL` contient l'adresse du déploiement : la démo s'auto-référence
+  // (canonique + données structurées) au lieu de pointer vers le site du cabinet.
+  url: process.env.URL ?? 'https://www.sagefemmevannes.com',
 } as const;
 
 export const adresseComplete = `${site.adresse.rue}, ${site.adresse.codePostal} ${site.adresse.ville}`;

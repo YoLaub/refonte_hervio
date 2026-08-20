@@ -1,0 +1,4 @@
+# Démo privée : interdit l'indexation par les moteurs sur tout le site.
+# À retirer lors de la mise en production sur le domaine du cabinet.
+/*
+  X-Robots-Tag: noindex, nofollow
