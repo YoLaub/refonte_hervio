@@ -1,0 +1,7 @@
+# Déploiement Netlify — site Astro 100 % statique, aucun adapter requis.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
