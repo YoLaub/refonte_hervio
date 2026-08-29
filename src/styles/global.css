@@ -1,26 +1,29 @@
 @import 'tailwindcss';
 
-/* ── Design system « Sérénité végétale » ──────────────────────────────
-   Vert sauge doux + touche terracotta, beaucoup de blanc, coins arrondis,
-   titres serif humaniste. Tokens = source unique de la charte. */
+/* ── Design system « Héritage modernisé » ─────────────────────────────
+   Violet orchidée + touche turquoise, repris du logo historique du cabinet
+   (sagefemmevannes.com) et adoucis : beaucoup de blanc, coins arrondis,
+   titres serif humaniste. Tokens = source unique de la charte.
+   Contrastes vérifiés WCAG AA : brand-600/700/800 et accent-600 passent
+   le texte sur blanc ; brand-600 porte du texte blanc (7:1). */
 @theme {
-  --color-brand-50: #f2f7f5;
-  --color-brand-100: #dcebe6;
-  --color-brand-200: #bcd8cf;
-  --color-brand-300: #97c2b3;
-  --color-brand-400: #6ba690;
-  --color-brand-500: #4f9078;
-  --color-brand-600: #3f7d67;
-  --color-brand-700: #315f4f;
-  --color-brand-800: #274b3f;
-  --color-brand-900: #1f3a30;
+  --color-brand-50: #f9f4fa;
+  --color-brand-100: #f1e5f3;
+  --color-brand-200: #e2cae7;
+  --color-brand-300: #cda3d6;
+  --color-brand-400: #b075bf;
+  --color-brand-500: #96509f;
+  --color-brand-600: #7e3f89;
+  --color-brand-700: #653170;
+  --color-brand-800: #522860;
+  --color-brand-900: #3f1f4a;
 
-  --color-accent-300: #f0c3ba;
-  --color-accent-400: #e8a598;
-  --color-accent-500: #db8b7b;
-  --color-accent-600: #c97a68;
+  --color-accent-300: #a5e0e8;
+  --color-accent-400: #5cc4d3;
+  --color-accent-500: #2aa7ba;
+  --color-accent-600: #147a8a;
 
-  --color-cream: #f7faf8;
+  --color-cream: #faf7fb;
 
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
