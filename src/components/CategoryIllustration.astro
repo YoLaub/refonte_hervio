@@ -10,6 +10,9 @@ interface Props {
 const { category, image, alt, class: className = '' } = Astro.props;
 const v = categoryVisual(category);
 
+// Photo de la fiche si fournie, sinon photo par défaut de la catégorie.
+const src = image ?? v.image;
+
 // Jeux de tracés (style ligne, cohérents avec les autres icônes du site).
 const icons: Record<string, string> = {
   grossesse: '<path d="M9 4a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z"/><path d="M11 8c0 4 4 5 4 9a4 4 0 0 1-8 0c0-2 1-3 1-5"/>',
@@ -20,8 +23,8 @@ const icons: Record<string, string> = {
 ---
 
 <div class={`relative overflow-hidden ${className}`}>
-  {image ? (
-    <img src={image} alt={alt ?? v.label} loading="lazy" class="h-full w-full object-cover" />
+  {src ? (
+    <img src={src} alt={alt ?? v.label} loading="lazy" class="h-full w-full object-cover" />
   ) : (
     <div class={`flex h-full w-full items-center justify-center bg-gradient-to-br ${v.gradient}`} role="img" aria-label={alt ?? v.label}>
       <svg
