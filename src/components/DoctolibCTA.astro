@@ -10,7 +10,7 @@ interface Props {
 const { variant = 'solid', compact = false } = Astro.props;
 
 const base =
-  'inline-flex items-center gap-2 rounded-full font-medium transition focus-visible:outline-2';
+  'inline-flex items-center gap-2 rounded-lg font-medium transition focus-visible:outline-2';
 const size = compact ? 'px-4 py-2 text-sm' : 'px-5 py-3';
 const styles =
   variant === 'solid'
