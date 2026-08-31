@@ -32,6 +32,12 @@
   --radius-3xl: 1.75rem;
 }
 
+/* Photos en noir et blanc — parti pris éditorial (les seules <img> du site sont
+   des photos ; illustrations de catégorie et icônes sont des SVG, non touchés). */
+img {
+  filter: grayscale(100%);
+}
+
 /* Titres en serif humaniste. */
 h1, h2, h3 {
   font-family: var(--font-serif);

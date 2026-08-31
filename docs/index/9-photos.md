@@ -23,6 +23,7 @@ decisions:
   - "2026-08-29 : chaque catégorie porte une photo par défaut (CategoryVisual.image) ; une fiche peut la surcharger via son frontmatter `image`. CategoryIllustration retombe sur le dégradé + icône si aucune photo."
   - "2026-08-29 : hero accueil = photo plein cadre + voile dégradé brand-900/800/700 pour garantir le contraste AA du texte blanc (inspiration sage-femme-pluvigner.fr, sans copie)."
   - "2026-08-29 : portraits des praticiennes toujours en placeholder à initiales — seule la cliente peut les fournir (voir [[6-equipe-photos]])."
+  - "2026-08-31 : toutes les photos passées en noir et blanc via une règle globale `img { filter: grayscale(100%) }` (parti pris éditorial demandé par la cliente). Sûr car les seules <img> du site sont des photos."
 ---
 
 **Quoi** : premières photos du site. Hero d'accueil plein cadre, photo d'ambiance

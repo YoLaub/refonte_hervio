@@ -12,6 +12,13 @@ const refs: [string, string][] = [
   ['src/pages/le-cabinet.astro', '/cabinet/salle.jpg'],
 ];
 
+describe('parti pris noir et blanc', () => {
+  it('global.css passe toutes les <img> en niveaux de gris', () => {
+    const css = read('src/styles/global.css').replace(/\s+/g, ' ');
+    expect(css).toMatch(/img\s*\{[^}]*filter:\s*grayscale\(100%\)/);
+  });
+});
+
 describe('photos des pages', () => {
   for (const [page, image] of refs) {
     it(`${page} référence ${image} et le fichier existe avec un alt`, () => {
