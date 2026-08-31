@@ -28,8 +28,10 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
 
-  --radius-2xl: 1.25rem;
-  --radius-3xl: 1.75rem;
+  /* Coins volontairement discrets — douceur sans effet « bulle ».
+     ~12/14 px sur les cartes et photos, 8 px sur les boutons (rounded-lg natif). */
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 0.875rem;
 }
 
 /* Photos en noir et blanc — parti pris éditorial (les seules <img> du site sont

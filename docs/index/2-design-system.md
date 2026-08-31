@@ -14,6 +14,7 @@ tests:
   - tests/nav.test.ts
 decisions:
   - "2026-07-20 : direction visuelle « Sérénité végétale » (sauge #3f7d67 + terracotta #e8a598, titres serif humaniste)."
+  - "2026-08-31 : coins resserrés — boutons en rounded-lg (8 px, plus de pilules), cartes/photos via --radius-2xl 0.75rem / --radius-3xl 0.875rem (~12/14 px). Portraits ronds conservés."
   - "2026-08-29 : charte révisée « Héritage modernisé » — retour au violet orchidée (#7e3f89) + touche turquoise (#147a8a) repris du logo historique sagefemmevannes.com, adoucis. Cliente : le vert sauge ne reprenait pas son identité. Tokens brand-*/accent-* redéfinis, contrastes WCAG AA revérifiés ; aucun composant modifié (tout passe par les tokens)."
   - "2026-07-20 : nav en donnée pure (src/data/nav.ts) consommée par Header ET Footer, slugs = ceux du site actuel (SEO)."
   - "2026-07-20 : menus déroulants hover + focus-within (CSS), menu mobile via <details> natif — zéro JS."

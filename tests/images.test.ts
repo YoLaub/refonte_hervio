@@ -19,6 +19,23 @@ describe('parti pris noir et blanc', () => {
   });
 });
 
+describe('coins discrets', () => {
+  it('les rayons de carte/photo restent modérés (<= 1rem)', () => {
+    const css = read('src/styles/global.css');
+    for (const token of ['--radius-2xl', '--radius-3xl']) {
+      const m = css.match(new RegExp(`${token}:\\s*([\\d.]+)rem`));
+      expect(m, `${token} introuvable`).not.toBeNull();
+      expect(Number(m![1])).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it('aucun bouton rectangulaire ne reste en pilule (rounded-full)', () => {
+    for (const f of ['src/components/DoctolibCTA.astro', 'src/components/DoctolibMenu.astro', 'src/components/PractitionerCard.astro']) {
+      expect(read(f)).not.toMatch(/rounded-full[^"']*(bg-brand-600|font-medium)/);
+    }
+  });
+});
+
 describe('photos des pages', () => {
   for (const [page, image] of refs) {
     it(`${page} référence ${image} et le fichier existe avec un alt`, () => {
